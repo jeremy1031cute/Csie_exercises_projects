@@ -22,3 +22,11 @@ int main(){
     //we could know fgets() won't add '\n' when user scanf more than(include) n-1 char
         return 0;
 }
+
+//the last one must be null
+a b c '\n' '\0'
+int len = strlen(line);
+if (line[len - 1] == '\n'){
+    line[len - 1] = '\0';
+    len--;
+}
