@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 size_t my_strlen(const char* str); //Returns the length of the C string str.
 int clean_new_line_character(char* str, int l);
 char* my_strcpy(char* dest, const char* source); //Copy string from source to dest.
-//char* my_strcat(char* dest, const char* source); //Concatenate strings from source to dest.
+char* my_strcat(char* dest, const char* source); //Concatenate strings from source to dest.
 //int my_strcmp(const char* str1, const char* str2); //Compares str1 to str2. The rules of comparison are the same as the strcmp().
 
 int main(){
@@ -13,7 +14,7 @@ int main(){
     int sentence_count = 0;
     int len, longest_len = 0;
     /*char* combine;
-    combine = (char *) malloc(sizeof(char) * 8192);*/
+    combine = (char *) calloc(sizeof(char) * 8192);*/
 
     //do{
         str = (char *) malloc(sizeof(char) * 101);
@@ -28,9 +29,9 @@ int main(){
         }else if(len == longest_len){
             //my_strcmp();
         }
-
+        //my_strcat(combine, str)
         free(str);
-    //}while(1)
+    //}while(getchar() != EOF)
 
 
     printf("number of sentence: %d\n", sentence_count);
@@ -58,7 +59,6 @@ int clean_new_line_character(char* str, int l){
 
 char* my_strcpy(char* dest, const char* source){
     int index = 0;
-
     while(*(source + index) != '\0'){
         *(dest + index) = *(source + index);
         index++;
@@ -66,6 +66,16 @@ char* my_strcpy(char* dest, const char* source){
     *(dest + index) = '\0';
     return dest;
  }
+
+char* my_strcat(char* dest, const char* source){
+    int i, j;
+    for (i = 0; *(dest + i) != '\0'; i++);
+    for (j = 0; *(source + j) != '\0'; j++) {
+        *(dest + i + j) = *(source + j);
+    }
+    *(dest + i + j) = '\0';
+    return dest;
+}
 //Knowledge learn fron min-huang teaching assistant
 /*
     1.When you use Windos system like txt. file, it will have two new line character '\n' and '\r',the two character will be printed together,
