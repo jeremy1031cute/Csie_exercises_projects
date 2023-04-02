@@ -5,39 +5,42 @@ size_t my_strlen(const char* str); //Returns the length of the C string str.
 int clean_new_line_character(char* str, int l);
 char* my_strcpy(char* dest, const char* source); //Copy string from source to dest.
 char* my_strcat(char* dest, const char* source); //Concatenate strings from source to dest.
-//int my_strcmp(const char* str1, const char* str2); //Compares str1 to str2. The rules of comparison are the same as the strcmp().
+int my_strcmp(const char* str1, const char* str2); //Compares str1 to str2. The rules of comparison are the same as the strcmp().
 
 int main(){
-    char *str, *str_new, *str_longest;
-    str_longest = (char *) calloc(sizeof(char) * 101);
+    char *str, *old_str, *str_longest;
+    str_longest = (char *) malloc(sizeof(char) * 101);
     *str_longest = '\0';
     int sentence_count = 0;
     int len, longest_len = 0;
     /*char* combine;
-    combine = (char *) calloc(sizeof(char) * 8192);*/
+    combine = (char *) malloc(sizeof(char) * 8192);*/
 
     //do{
-        str = (char *) malloc(sizeof(char) * 101);
+        str = (char *)malloc(sizeof(char) * 101);
         fgets(str, 101, stdin);
         sentence_count++;
         len = my_strlen(str);
         len = clean_new_line_character(str, len);
-        if(len >= longest_len){
+        if(len > longest_len){
             longest_len = len;
             free(str_longest);
             my_strcpy(str_longest, str);
         }else if(len == longest_len){
-            //my_strcmp();
+            //my_strcmp(str, old_str);
         }
-        //my_strcat(combine, str)
-        free(str);
-    //}while(getchar() != EOF)
+        //my_strcat(combine, str);
+
+    //}while(getchar() != EOF)//How to read eof without getchar?
 
 
     printf("number of sentence: %d\n", sentence_count);
     printf("longest sentence: %s\n", str_longest);
     printf("longest length: %d\n", longest_len);
     //printf("%s", combine);
+    free(str_longest);
+    free(str);
+    //free(combine);
     return 0;
 }
 
@@ -76,6 +79,15 @@ char* my_strcat(char* dest, const char* source){
     *(dest + i + j) = '\0';
     return dest;
 }
+
+int my_strcmp(const char* str1, const char* str2){
+    int i = 0;
+    while((*(str1 + i) == *(str2 + i)) && (*(str1+i) != '\0') && (*(str2+i) != '\0')){
+        i++;
+    }
+    return (*(str1 + i) - *(str2 + i));
+}
+
 //Knowledge learn fron min-huang teaching assistant
 /*
     1.When you use Windos system like txt. file, it will have two new line character '\n' and '\r',the two character will be printed together,
