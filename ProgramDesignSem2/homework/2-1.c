@@ -32,7 +32,7 @@ int main(){
             current->next = NULL;
         }
         if(new_node->prior_num == current->course_id){
-            current->prior = current;
+            new_node->prior = current;
         }else{
             current->next = NULL;
         }
