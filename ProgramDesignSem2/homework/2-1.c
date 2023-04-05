@@ -4,7 +4,7 @@
 
 int main(){
     int course_num;
-    scanf("%d ", &course_num);
+    scanf("%d", &course_num);
 
     struct course{
         int course_id;
@@ -20,7 +20,7 @@ int main(){
     for(int i = 0; i < course_num; i++){
         struct course *new_node;
         new_node = malloc(sizeof(struct course));
-        scanf("%d %d %d %s ", &new_node->course_id, &new_node->next_num, &new_node->prior_num, new_node->name);
+        scanf(" %d %d %d %s", &new_node->course_id, &new_node->next_num, &new_node->prior_num, new_node->name);
         if(i == 0){
             first = new_node;
             current = first;
