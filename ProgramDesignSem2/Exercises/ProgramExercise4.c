@@ -35,7 +35,7 @@ int main(){
         switch(option){
         case 1:
             printf("Enter a criminal's name: ");
-            //(criminal[num].name, 15, stdin);
+            //fgets(criminal[num].name, 15, stdin);
             scanf("%s", criminal[num].name);
             /*len = strlen(criminal[num].name);
             if(criminal[num].name[len-1] == '\n'){
