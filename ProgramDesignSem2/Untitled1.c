@@ -1,37 +1,64 @@
 #include <stdio.h>
-#include <stdbool.h>
-#define MAX_str 100001
+#include <stdlib.h>
+#define NAME_LENGTH 49
 
 int main(){
-    char str[MAX_str];
-    char word[100];
-    int count = 0;
-    int flag;//check if word is same with the str, if not, give the false to it and won't count
+    int course_num;
+    scanf("%d", &course_num);
 
-    fgets(str, MAX_str, stdin);
-    scanf("%s", word);
+    struct course{
+        int course_id;
+        struct course *next;
+        struct course *prior;
+        int next_num;
+        int prior_num;
+        char name[NAME_LENGTH];
+    };
 
-    int str_len = strlen(str) - 1;
-    str[str_len] = '\0';
-    int word_len = strlen(word);
-    //printf("str_len = %d, word_len = %d\n", str_len, word_len);
+    struct course *first = NULL, *current = NULL;
 
-    for(int i = 0; i < str_len; i++){
-        flag = true;
-        for(int j = 0; j < word_len; j++){
-            if(word[j] != str[i + j]){ //In order to prevent from user scanf only a letter
-                flag = false;
-                break;
-            }
+    for(int i = 0; i < course_num; i++){
+        struct course *new_node;
+        new_node = malloc(sizeof(struct course));
+        scanf(" %d %d %d %s", &new_node->course_id, &new_node->next_num, &new_node->prior_num, new_node->name);
+        if(i == 0){
+            first = new_node;
+            current = first;
+            continue;
         }
+        if(current->next_num == new_node->course_id){
+            current->next = new_node;
+        }else{
+            current->next = NULL;
+        }
+        if(new_node->prior_num == current->course_id){
+            new_node->prior = current;
+        }else{
+            current->next = NULL;
+        }
+        current = new_node;
+    }
 
-        if(flag){
-            count++;
+    current = first;
+    printf("Current Course: %s\n", current->name);
+    while(1){
+        char check;
+        printf("[n] Next course. [p] Prior course [q] Quit:");
+        scanf(" %c", &check);
+        if(check == 'n' && current->next == NULL){
+            printf("There is no next course.\n");
+        }else if(check == 'p' && current->prior == NULL){
+            printf("There is no previous course.\n");
+        }else if(check == 'q'){
+            break;
+        }else if(check == 'n'){
+            current = current->next;
+            printf("Current Course: %s\n", current->name);
+        }else if(check == 'p'){
+            current = current->prior;
+            printf("Current Course: %s\n", current->name);
         }
     }
 
-    printf("%d\n", count);
-
     return 0;
 }
-/*weee~*/
