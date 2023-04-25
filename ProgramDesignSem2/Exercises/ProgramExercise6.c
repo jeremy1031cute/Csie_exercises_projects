@@ -66,7 +66,7 @@ int main(){
 //search()->check product whether have been add at linklist¡Aif it have, add or minus word_num
 int search(struct node **start, char name[], int add_or_minus){
     struct node *current = (*start);
-    //WRONG --> while(strcmp(name, current->word) != 0 && current != NULL) =>can't use the pointer which point ro null to check the item
+    //WRONG:dangling pointer --> while(strcmp(name, current->word) != 0 && current != NULL) =>can't use the pointer which point ro null to check the item
     while(current != NULL && strcmp(name, current->word) != 0){//pay attention at order of conditions
         current = current->next;
     }
