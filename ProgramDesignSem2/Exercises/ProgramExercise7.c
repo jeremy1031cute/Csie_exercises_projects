@@ -15,10 +15,10 @@ struct info{
 void Bubble_sort(struct info arr[], int num){
     struct info temp;
     int flag = 0;
-    for(int i = 1; (i < num) && (flag != no_exchange); i++){ //i:the exchange times need
+    for(int i = 1; (i < num) && (flag != no_exchange); i++){ //i:the total run times
         flag = no_exchange;
-        for(int j = 0; j < num - i; j++){ //after exchanging, the last one must be the biggest
-            if(arr[j].grade > arr[j+1].grade){
+        for(int j = 0; j < num - i; j++){       //after exchanging, the last one must be the biggest
+            if(arr[j].grade > arr[j+1].grade){  //num - i:the neighbors exchange times need
                 temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
