@@ -71,8 +71,7 @@ int main(){
         ptr->linklist_next = NULL;
     }
 
-    int *id_choose = malloc(10 * sizeof(int));
-    id_choose = qid_rand_choose();
+    int *id_choose = qid_rand_choose();
     if (id_choose == NULL) {
         return 0;//End this game!
     }
