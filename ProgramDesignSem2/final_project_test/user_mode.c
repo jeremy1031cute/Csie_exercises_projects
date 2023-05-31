@@ -76,7 +76,6 @@ int main(){
         return 0;//End this game!
     }
 
-    //int id_choose[10] = {1, 2, 3, 4, 5, 6, 7, 9, 11, 12};
     //if choose the deleted question?
     Bubble_sort(id_choose, 10);
 
@@ -96,6 +95,7 @@ int main(){
             if (user_S_ans != ptr->que.ans) {
                 printf("What a pity! You got it wrong!\n");
                 keep_answer_right = 0;
+                ptr->que.correct_percent = ((ptr->que.correct_num * 100) / ((ptr->que.answered_num) + 1));
             } else {
                 printf("Amazing! You got the question right!\n");
                 keep_answer_right++;
@@ -103,12 +103,37 @@ int main(){
                     printf("Wow! You answered %d questions in a row!\n", keep_answer_right);
                 score += 10;
                 ptr->que.correct_num++;
+
+                ptr->que.correct_percent = ((ptr->que.correct_num * 100) / ((ptr->que.answered_num) + 1));
+                printf("debug: %.2f\n", ptr->que.correct_percent);
             }
             ptr->que.answered_num++;
             ccc++;
         }
     }
     printf("\nCongratulations! You got %d points!\n", score);
+
+
+    fclose(fptr);
+
+    //renew some info
+    FILE *fptr_out;
+    fptr_out = fopen("test.txt", "w");
+    if (fptr_out == NULL) {
+        printf("Failed to open file for writing.\n");
+        return 0;
+    }
+
+    for (ptr = first; ptr != NULL && ptr->que.qid != 0; ptr = ptr->linklist_next) { //there some bug that will fprintf id = 0
+        fprintf(fptr_out, "%d\n", ptr->que.qid);
+        fputs(ptr->que.q_content, fptr_out);
+        fprintf(fptr_out, "\n%d\n", ptr->que.ans);
+
+        // 寫入更改後的 answered_num 和 correct_num
+        fprintf(fptr_out, "%.2f\n", ptr->que.correct_percent);
+        fprintf(fptr_out, "%d\n", ptr->que.answered_num);
+        fprintf(fptr_out, "%d\n", ptr->que.correct_num);
+    }
 
     //free memories and close files
     free(id_choose);
@@ -118,7 +143,9 @@ int main(){
         ptr = ptr->linklist_next;
         free(ptr);
     }
-    fclose(fptr);
+
+    fclose(fptr_out);
+
     return 0;
 }
 
