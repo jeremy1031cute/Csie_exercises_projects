@@ -95,7 +95,7 @@ int main(){
             if (user_S_ans != ptr->que.ans) {
                 printf("What a pity! You got it wrong!\n");
                 keep_answer_right = 0;
-                ptr->que.correct_percent = ((ptr->que.correct_num * 100) / ((ptr->que.answered_num) + 1));
+                ptr->que.correct_percent = ((ptr->que.correct_num * 100) / ((ptr->que.answered_num) + 1));//remember to multiply 100
             } else {
                 printf("Amazing! You got the question right!\n");
                 keep_answer_right++;
@@ -129,7 +129,7 @@ int main(){
         fputs(ptr->que.q_content, fptr_out);
         fprintf(fptr_out, "\n%d\n", ptr->que.ans);
 
-        // 寫入更改後的 answered_num 和 correct_num
+        // renew the info answered_num & correct_num & answered_num
         fprintf(fptr_out, "%.2f\n", ptr->que.correct_percent);
         fprintf(fptr_out, "%d\n", ptr->que.answered_num);
         fprintf(fptr_out, "%d\n", ptr->que.correct_num);
@@ -151,14 +151,14 @@ int main(){
 
 char* qid_rand_choose(void) {    //return the pointer point to array which record the q_id been choosen
     srand( time(NULL) );
-    int* record = malloc(10 * sizeof(int));//int record[10] = {0,0};
+    int* record = malloc(10 * sizeof(int));
     int i , j;
     int max = 20;//int max = max_id();
+    if (max <10) {
+        printf("The number of questions is not enough!(< 10)\n");
+        return NULL;
+    }
     for (i = 1; i <= 10; i++) {
-        if (max <10) {
-            printf("The number of questions is not enough!(< 10)\n");
-            return NULL;
-        }
         do {
             record[i - 1] = rand() % (max - 1 + 1) + 1;
             for (j = 1; j < i; j++) {
