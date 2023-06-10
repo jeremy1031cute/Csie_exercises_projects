@@ -99,5 +99,5 @@ int my_strcmp(const char* str1, const char* str2){
         btw git usually have some built-in function to solve it automatically.
         It is better to check the history and edit it in person, arrange the schedule wisely, or write different file(each responsible for diff function)
 
-    3.you can use pointer to edit varible declared by const, but the behavior will generate warning to ask u just not to use const.
+    3.you can use pointer to edit varible declared by const in some compiler, but the behavior will generate warning to ask u just not to use const.
 */
