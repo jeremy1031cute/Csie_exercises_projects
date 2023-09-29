@@ -7,9 +7,9 @@ how are you?
 2
 how are you?
 3
-63.00
-22
-14
+65.00
+23
+15
 3
 how are you?
 3
@@ -25,27 +25,27 @@ how are you?
 5
 how are you?
 3
-65.00
-23
-15
+66.00
+24
+16
 6
 how are you?
 3
-47.00
-19
-9
+50.00
+20
+10
 7
 how are you?
 3
-50.00
-18
-9
+52.00
+19
+10
 8
 how are you?
 3
-55.00
-20
-11
+57.00
+21
+12
 9
 how are you?
 3
@@ -55,9 +55,9 @@ how are you?
 10
 how are you?
 3
-60.00
-20
-12
+61.00
+21
+13
 11
 how are you?
 3
@@ -73,9 +73,9 @@ how are you?
 13
 how are you?
 3
-50.00
-22
-11
+52.00
+23
+12
 14
 how are you?
 3
@@ -91,21 +91,21 @@ how are you?
 16
 how are you?
 3
-56.00
-23
-13
+58.00
+24
+14
 17
 how are you?
 3
-42.00
-19
-8
+45.00
+20
+9
 18
 how are you?
 3
-40.00
-20
-8
+42.00
+21
+9
 19
 how are you?
 3

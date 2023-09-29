@@ -4,7 +4,7 @@
 #include <time.h>   //cooperate with rand()
 //#include "database.h"
 
-char* qid_rand_choose(void);
+int* qid_rand_choose(void);
 void Bubble_sort(int arr[], int num);
 
 #ifndef DATABASE_H
@@ -149,7 +149,7 @@ int main(){
     return 0;
 }
 
-char* qid_rand_choose(void) {    //return the pointer point to array which record the q_id been choosen
+int* qid_rand_choose(void) {    //return the pointer point to array which record the q_id been choosen
     srand( time(NULL) );
     int* record = malloc(10 * sizeof(int));
     int i , j;
