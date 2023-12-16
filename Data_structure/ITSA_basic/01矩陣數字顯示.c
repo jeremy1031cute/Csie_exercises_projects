@@ -12,8 +12,8 @@ int main() {
 
     char str[5];
     scanf("%s", str);
-    for (int col = 0; col < 5; col++) {
-        for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 5; col++) { //up to down
+        for (int row = 0; row < 4; row++) { //right to left
             int d = str[row] - '0'; //turn char into int
             if (row > 0)
                 printf(" ");
