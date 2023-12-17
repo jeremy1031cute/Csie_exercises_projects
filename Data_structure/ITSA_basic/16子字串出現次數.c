@@ -12,7 +12,7 @@ int main()
 
 
     for (int i = 0; i < len2-1; i++) {
-        for (int j = 0; j < len1-1; j++) { //delete '\n'
+        for (int j = 0; j < len1-1; j++) { //notice '\n'
             if (str2[i + j] != str1[j]) {
                 flag = 1;
                 break;
